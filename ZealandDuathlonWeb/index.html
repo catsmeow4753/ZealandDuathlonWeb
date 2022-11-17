@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zealand Duathlon</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    <div id="app">
+        <span>Name: </span><input v-model="name" type="text" placeholder="Name" /><br>
+        <span>Age: </span><input v-model="age" type="number" placeholder="Age" /><br>
+        <span>Bike: </span><input v-model="bike" type="number" placeholder="Bike"/><br>
+        <span>Run: </span><input v-model="run" type="number" placeholder="Run" /><br>
+        <br>
+        <div v-if="this.isShowing == false">
+            <button v-on:click="show">Show</button>
+        </div>
+        <div v-else="this.isShowing == true">
+            <button v-on:click="show">Hide</button>
+        </div>
+        <button v-on:click="create">Create</button>
+        <button v-on:click="clear">Clear</button>
+        <br><br>
+        <div v-if="this.isShowing == false || this.duathletes == null || this.duathletes.length == 0">
+            <div>
+                Der er ingen duatleter at vise.
+            </div>
+        </div>
+        <div v-else-if="this.isShowing == true">
+            <div v-for="(duathlete, index) in duathletes" :key="index">
+                <div>
+                    Bip: {{ duathlete.bip }}
+                </div>
+                <div>
+                    Name: {{ duathlete.name }}
+                </div>
+                <div>
+                    Age Group: {{ duathlete.ageGroup }}
+                </div>
+                <div>
+                    Bike: {{ duathlete.bike }}
+                </div>
+                <div>
+                    Run: {{ duathlete.run }}
+                </div>
+                <div>
+                    Total: {{ duathlete.total }}
+                </div>
+                <br>
+            </div>
+        </div>
+        <script src="js/index.js"></script>
+    </div>
+</body>
+</html>
